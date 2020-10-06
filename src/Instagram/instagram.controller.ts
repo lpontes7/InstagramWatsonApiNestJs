@@ -9,14 +9,14 @@ export class InstagramController {
     private readonly http: HttpService,
   ) {}
 
-  @Get('/:account-name')
+  @Get('/:account')
   @ApiTags('Instagram')
   @ApiOperation({
     summary: 'Pegar Json do perfil do instagram informado',
   })
-  async GetProfile(@Param('account-name') account_name: string) {
+  async GetProfile(@Param('account') accountName: string) {
     const response = await this.http
-      .get('https://www.instagram.com/' + account_name + '/?__a=1')
+      .get('https://www.instagram.com/' + accountName + '/?__a=1')
       .toPromise();
     return response.data;
   }
